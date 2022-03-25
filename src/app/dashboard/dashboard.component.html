@@ -1,0 +1,19 @@
+<div class="widget-controls">
+  <h1>WIDGETS</h1>
+  <div class="widget-buttons">
+    <h3>Add:</h3>
+    <button *ngFor="let type of types" (click)="add(type)">
+      {{ type | titlecase }} Widget
+    </button>
+  </div>
+</div>
+<div class="widget-grid" *ngIf="widgets$ | async as widgets; else noWidgets">
+  <ng-template *ngFor="let widget of widgets" [lazyWidget]="widget"></ng-template>
+</div>
+
+<ng-template #noWidgets>
+  <div>
+    <h3>No Widgets</h3>
+    <p>Add a widget in the header above</p>
+  </div>
+</ng-template>
