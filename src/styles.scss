@@ -93,3 +93,45 @@ blockquote {
   justify-content: center;
   flex-grow: 1;
 }
+
+/* Gridster Overrides for Fancy Dashboard */
+
+gridster {
+  background-color: transparent !important;
+
+  .gridster-column,
+  .gridster-row {
+    display: block !important;
+    border-color: transparent !important;
+  }
+
+  &.display-grid {
+    .gridster-column,
+    .gridster-row {
+      transition: border-color 0.2s ease-in-out;
+      border-color: rgba(var(--color-white), 0.25) !important;
+    }
+  }
+
+  &.mobile {
+    height: auto !important;
+    gridster-item {
+      min-height: 200px !important;
+      height: auto !important;
+    }
+  }
+
+  gridster-item {
+    background-color: transparent !important;
+
+    &.gridster-item-moving {
+      z-index: 2 !important;
+    }
+
+    &:hover {
+      .gridster-item-resizable-handler.handle-se {
+        border-color: transparent transparent transparent !important;
+      }
+    }
+  }
+}

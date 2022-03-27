@@ -1,0 +1,15 @@
+<div class="widget-controls">
+  <h4>FANCY DASHBOARD (try dragging headers & resizing)</h4>
+  <div class="widget-buttons">
+    <button *ngFor="let type of types" (click)="add(type)">
+      {{ type | titlecase }} Widget
+    </button>
+  </div>
+</div>
+<div class="gridster-container">
+  <gridster #grid *ngIf="widgets$ | async as widgets" [options]="options">
+    <gridster-item *ngFor="let widget of widgets; trackBy: identify" [item]="widget">
+      <ng-template [lazyWidget]="widget['type']"></ng-template>
+    </gridster-item>
+  </gridster>
+</div>

@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
+    path: 'fancy',
+    loadChildren: () =>
+      import('./fancy-dashboard/fancy-dashboard.module').then((m) => m.FancyDashboardModule),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

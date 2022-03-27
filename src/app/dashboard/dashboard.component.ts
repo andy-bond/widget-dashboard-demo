@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject, ViewChild, ElementRef } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { WidgetConfiguration, WIDGET_CONFIGURATION } from '../widgets';
 
 @Component({
