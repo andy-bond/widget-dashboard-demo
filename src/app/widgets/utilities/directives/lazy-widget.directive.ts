@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  Compiler,
   Directive,
   Inject,
   Input,
@@ -23,7 +22,6 @@ export class LazyWidgetDirective implements AfterViewInit {
   @Input() lazyWidget!: string;
 
   constructor(
-    private compiler: Compiler,
     private viewContainerRef: ViewContainerRef,
     @Inject(WIDGET_CONFIGURATION) private widgetConfiguration: WidgetConfiguration
   ) {
@@ -43,13 +41,10 @@ export class LazyWidgetDirective implements AfterViewInit {
       // Import the module
       const module = await widget.import();
 
-      // Compile the Module
-      const moduleFactory = await this.compiler.compileModuleAsync(module);
-
       // Check that the module extends our LazyWidget class
-      if (isWidgetModule(moduleFactory.moduleType)) {
+      if (isWidgetModule(module)) {
         // Get the component to load
-        const component = moduleFactory.moduleType.entry;
+        const component = module.entry;
 
         // Clear the container
         this.viewContainerRef.clear();
